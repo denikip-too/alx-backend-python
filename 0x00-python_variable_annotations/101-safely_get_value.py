@@ -2,6 +2,9 @@
 """type annotations"""
 from typing import Mapping, Any, Union, TypeVar
 T = TypeVar('T')
+
+
+"""define NoneType"""
 NoneType = type(None)
 
 
