@@ -3,11 +3,7 @@
 from typing import Sequence, Union, Any
 
 
-"""define NoneType"""
-NoneType = type(None)
-
-
-def safe_first_element(lst: Sequence[Any]) -> Union[Any, NoneType]:
+def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
     """Augmenting the code with the correct duck-typed annotations"""
     if lst:
         return lst[0]
