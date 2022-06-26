@@ -3,7 +3,6 @@
 from typing import List, Tuple
 
 
-
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """Type Checking and using mypy to validate the code"""
     zoomed_in: List = [
