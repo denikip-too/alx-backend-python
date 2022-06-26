@@ -6,6 +6,7 @@ T = TypeVar('T')
 
 """define NoneType"""
 NoneType = type(None)
+"""define NoneType"""
 
 
 def safely_get_value(
