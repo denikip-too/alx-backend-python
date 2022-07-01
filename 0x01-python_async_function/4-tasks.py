@@ -2,9 +2,10 @@
 """execute multiple coroutines at the same time with async"""
 import asyncio
 import random
+from typing import List
 
 
-async def task_wait_n(n: int, max_delay: int) -> float:
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """execute multiple coroutines at the same time with async"""
     res = []
     temp = []
