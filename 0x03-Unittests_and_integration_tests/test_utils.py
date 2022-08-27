@@ -12,7 +12,6 @@ class TestAccessNestedMap(unittest.TestCase):
         [{"a": {"b": 2}}, ("a",)],
         [{"a": {"b": 2}}, ("a", "b")]
         ])
-
     def test_access_nested_map(self, a, b):
         """test that the method returns what it is supposed to"""
         self.assertEqual(a, b)
