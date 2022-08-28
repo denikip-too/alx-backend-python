@@ -23,7 +23,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",), "a"),
         ({"a": 1}, ("a", "b"), "b")
         ])
-    def test_access_nested_map_exception(nested_map, path, expected):
+    def test_access_nested_map_exception(self, nested_map, path, expected):
         """test that KeyError is raised using assertRaises context manager"""
         with self.assertRaises(KeyError) as raises:
             self.assertEqua(access_nested_map(nested_map, path), expected)
@@ -38,3 +38,21 @@ class TestGetJson(unittest.TestCase):
     def test_get_json(self, url, payload):
         """test that utils.get_json returns the expected result"""
         self.assertEqual(get_json(url), payload)
+
+
+class TestMemoize(unittest.TestCase):
+    """class TestMemoize"""
+
+    def test_memoize(self):
+        """test_memoize method"""
+        class TestClass:
+            """class TestClass"""
+
+            def a_method(self):
+                """a_method method"""
+                return (42)
+
+            @memoize
+            def a_property(self):
+                """a_property method"""
+                return (self.a_method())
