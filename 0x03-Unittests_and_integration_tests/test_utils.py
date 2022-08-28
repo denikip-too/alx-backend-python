@@ -29,6 +29,7 @@ class TestAccessNestedMap(unittest.TestCase):
             self.assertEqua(access_nested_map(nested_map, path), expected)
             raise
 
+
 class TestGetJson(unittest.TestCase):
     """class TestGetJson"""
 
