@@ -45,8 +45,6 @@ class TestAccessNestedMap(unittest.TestCase):
 class TestMemoize(unittest.TestCase):
     """class TestMemoize"""
 
-    @patch('test_memoize.TestClass.a_method', 1)
-    @patch('test_memoize.TestClass.a_property', 2)
     def test_memoize(self, call):
         """test_memoize method"""
         class TestClass:
