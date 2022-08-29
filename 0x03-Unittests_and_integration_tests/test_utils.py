@@ -30,13 +30,13 @@ class TestAccessNestedMap(unittest.TestCase):
             self.assertEqual(f"KeyError('{expected}')", repr(raises.exception))
 
 
-"""class TestGetJson(unittest.TestCase):"""
-    """class TestGetJson"""
+"""class TestGetJson(unittest.TestCase):
+    class TestGetJson
 
-    """@mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_get_json(self, url, payload):"""
-        """test that utils.get_json returns the expected result"""
-        """result = get_json('http://example.com')
+    @mock.patch('requests.get', side_effect=mocked_requests_get)
+    def test_get_json(self, url, payload):
+        test that utils.get_json returns the expected result
+        result = get_json('http://example.com')
         self.assert_called_once(result, {"payload": True})
         result = get_json('http://holberton.io')
         self.assert_called_once(result, {"payload": False})"""
