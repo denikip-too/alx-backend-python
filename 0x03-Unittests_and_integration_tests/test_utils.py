@@ -26,8 +26,8 @@ class TestAccessNestedMap(unittest.TestCase):
     def test_access_nested_map_exception(self, nested_map, path, expected):
         """test that KeyError is raised using assertRaises context manager"""
         with self.assertRaises(KeyError) as raises:
-            self.assertEqua(access_nested_map(nested_map, path), expected)
-            raise
+            access_nested_map(nested_map, path)
+            self.assertEqual(f"KeyError('{expected}')", repr(raises.exception))
 
 
 class TestGetJson(unittest.TestCase):
