@@ -28,39 +28,3 @@ class TestAccessNestedMap(unittest.TestCase):
         with self.assertRaises(KeyError) as raises:
             access_nested_map(nested_map, path)
             self.assertEqual(f"KeyError('{expected}')", repr(raises.exception))
-
-
-class TestGetJson(unittest.TestCase):
-    """class TestGetJson"""
-
-    @mock.patch('requests.get', side_effect=mocked_requests_get)
-    def test_get_json(self, url, payload):
-        """test that utils.get_json returns the expected result"""
-        result = get_json('http://example.com')
-        self.assert_called_once(result, {"payload": True})
-        result = get_json('http://holberton.io')
-        self.assert_called_once(result, {"payload": False})
-
-
-class TestMemoize(unittest.TestCase):
-    """class TestMemoize"""
-
-    @patch('test_memoize.TestClass.a_method', 1)
-    @patch('test_memoize.TestClass.a_property', 2)
-    def test_memoize(self, call):
-        """test_memoize method"""
-        class TestClass:
-            """class TestClass"""
-
-            def a_method(self):
-                """a_method method"""
-                return (42)
-
-            @memoize
-            def a_property(self):
-                """a_property method"""
-                return (self.a_method())
-
-        self.assert_called_once(a_method(), 42)
-        self.assertEqual(a_property(), 42)
-        self.assertEqual(call.call_count, 2)
