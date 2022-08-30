@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """tests for client.py"""
 from client import GithubOrgClient
+from utils import (access_nested_map, get_json, memoize)
 from unittest.mock import patch
 from parameterized import parameterized, parameterized_class
 
@@ -25,11 +26,11 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_public_repos_url.return_value = self._public_repos_url()
             mock_public_repos_url.assert_called_once_with()
 
-    @patch('GithubOrgClient.public_repos')
+    @patch('get_json')
     def test_public_repos(self, license, result):
         """test that it return a payload of your choice"""
         with patch('GithubOrgClient._public_repos_url') as mock:
-            mock.return_value = self._public_repos_url()
+            mock.return_value = _public_repos_url()
             self.assert_called_once(public_repos(license), result)
 
     @parameterized.expand([
