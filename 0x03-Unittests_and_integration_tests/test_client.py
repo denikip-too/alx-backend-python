@@ -34,7 +34,7 @@ class TestGithubOrgClient(unittest.TestCase):
             self.assert_called_once(public_repos(license), result)
 
     @parameterized.expand([
-        ("{"license": {"key": "my_license"}}", "my_license", "my_license"),
+        ("{"license": {"key": "my_license"}}", "my_license", True),
         ("{"license": {"key": "other_license"}}", "my_license", {
             "key": "other_license"})
         ])
