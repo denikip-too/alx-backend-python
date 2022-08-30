@@ -40,3 +40,18 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_has_license(self, repo, license_key, expected):
         """unit-test GithubOrgClient.has_license"""
         self.assertEqual(has_license(repo, license_key), expected)
+
+
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """test the method in an integration test"""
+
+    @classmethod
+    def setUpClass(cls):
+        """part of the unittest.TestCase API"""
+        GithubOrgClient.initialize()
+        cls.f = GithubOrgClient.initialize_storage()
+
+    @classmethod
+    def tearDownClass(cls):
+        """part of the unittest.TestCase API"""
+        cls.f.destroy()
