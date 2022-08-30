@@ -19,8 +19,9 @@ class TestGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_url(self, payload):
         """Test that the result based on the mocked payload"""
-        with mock.patch('GithubOrgClient._public_repos_url'
-                , new_callable=PropertyMock) as mock_public_repos_url:
+        with mock.patch(
+                'GithubOrgClient._public_repos_url', new_callable=PropertyMock
+                ) as mock_public_repos_url:
             mock_public_repos_url.return_value = self._public_repos_url()
             mock_public_repos_url.assert_called_once_with()
 
@@ -33,8 +34,8 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @parameterized.expand([
         ("{"license": {"key": "my_license"}}", "my_license", "my_license"),
-        ("{"license": {"key": "other_license"}}", "my_license"
-            , {"key": "other_license"})
+        ("{"license": {"key": "other_license"}}", "my_license", {
+            "key": "other_license"})
         ])
     def test_has_license(self, repo, license_key, expected):
         """unit-test GithubOrgClient.has_license"""
