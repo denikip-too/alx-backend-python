@@ -9,12 +9,12 @@ from parameterized import parameterized, parameterized_class
 class TestGithubOrgClient(unittest.TestCase):
     """class TestGithubOrgClient"""
 
-    @patch('GithubOrgClient.org')
+    @patch('get_json')
     @parameterized.expand([
-        ("google"),
-        ("abc")
+        ("google", "google"),
+        ("abc", "abc")
         ])
-    def test_GithubOrgClient(self, name):
+    def test_org(self, name):
         """test that GithubOrgClient.org returns the correct value"""
         self.assertEqual(org(), name)
 
