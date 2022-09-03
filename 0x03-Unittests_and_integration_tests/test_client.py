@@ -61,3 +61,13 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     def tearDownClass(cls):
         """part of the unittest.TestCase API"""
         cls.f.destroy()
+
+    @patch('GithubOrgClient.public_repos')
+    def test_public_repos(self, license):
+        """test_public_repos method"""
+        return (public_repos(license))
+
+    def test_public_repos_with_license(self, license="apache-2.0", expected):
+        """test_public_repos_with_license method"""
+        self.assertEqual(public_repos(license), self.test_public_repos(
+            license))
