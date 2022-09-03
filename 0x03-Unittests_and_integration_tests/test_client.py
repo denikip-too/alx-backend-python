@@ -48,7 +48,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     """test the method in an integration test"""
 
     @classmethod
-    def setUpClass(self, url):
+    def setUpClass(cls):
         """part of the unittest.TestCase API"""
         with mock.patch('requests.get') as mock:
             mock.return_value = requests.get(url).json()
@@ -56,7 +56,6 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     @mock.patch('requests.get', side_effect=requests.get(url).json())
     def get_patcher(self):
         """start a patcher"""
-        return (mock.return_value)
 
     @classmethod
     def tearDownClass(cls):
