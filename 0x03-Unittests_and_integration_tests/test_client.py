@@ -42,14 +42,21 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(has_license(repo, license_key), expected)
 
 
+@parameterized_class(
+        (org_payload, repos_payload, expected_repos, apache2_repos))
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """test the method in an integration test"""
 
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(self, url):
         """part of the unittest.TestCase API"""
-        GithubOrgClient.initialize()
-        cls.f = GithubOrgClient.initialize_storage()
+        with mock.patch('requests.get') as mock:
+            mock.return_value = requests.get(url).json()
+
+    @mock.patch('requests.get', side_effect=requests.get(url).json())
+    def get_patcher(self):
+        """start a patcher"""
+        return (mock.return_value)
 
     @classmethod
     def tearDownClass(cls):
